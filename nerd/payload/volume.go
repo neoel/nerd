@@ -2,12 +2,12 @@ package payload
 
 //VolumeName contains the volume Name field and its validation rules
 type VolumeName struct {
-	Name string `json:"name" valid:"matches(^[a-z][a-z-_]{0,31}$)"`
+	Name string `json:"name" valid:"matches(^[a-z][a-z-_]*$),length(1|32)"`
 }
 
 //VolumeCreateInput is used as input to volume creation
 type VolumeCreateInput struct {
-	VolumeName
+	VolumeName `valid:"required"`
 }
 
 //VolumeCreateOutput is returned from creating a volume
